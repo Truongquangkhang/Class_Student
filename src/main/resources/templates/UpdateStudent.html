@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+
+<div name="diva" style="display: flex; justify-content: center; height: 920px; padding-top: 80px;">
+  <form name="UpdateStudent"  action="/UpdateStudent" method="POST" style=" padding: 16px 0;">
+    <table>
+      <caption>Insert Student</caption>
+
+      <tr>
+        <th><input type="text" name="id" th:value="${Student.getId()}" hidden="hidden"></th>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th><input type="text" name="name" th:value="${Student.getName()}"></th>
+      </tr>
+      <tr>
+        <th>Class</th>
+        <th>
+          <select name="class" >
+            <th:block th:each="item :${ListClass}" th:with="NameClass = ${Student.getAclass().getName()}" >
+
+              <option   th:value="${item.getId()}"  th:text="${item.getName()}" th:selected="(${NameClass}==*{item.getName()})">
+            </th:block>
+          </select>
+        </th>
+      </tr>
+      <tr tyle="display:flex; justify-content:center">
+        <th></th>
+        <th>
+          <input type="submit" name="b1" value="OK">
+        </th>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+
+</html>
